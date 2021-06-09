@@ -5,6 +5,8 @@ public class ViewManager {
 	private static ViewManager viewManager;
 	
 	private CalculatorUI calculatorUI;
+	private CalculatorUISupport calculatorUISupport;
+	
 
 	public static ViewManager getInstance() {
 		if (viewManager == null) {
@@ -15,6 +17,7 @@ public class ViewManager {
 	
 	public void createUI() {
 		calculatorUI = new CalculatorUI();
+		calculatorUISupport = new CalculatorUISupport(calculatorUI);
 	}
 
 }
