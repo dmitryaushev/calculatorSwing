@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CalculatorPanel extends JPanel {
-
+public class CalculatorUI {
+	
 	private JTextField text;
 	
 	private JButton button0;
@@ -30,10 +30,20 @@ public class CalculatorPanel extends JPanel {
 	private JButton buttonMultiplication;
 	private JButton buttonDivision;
 	private JButton buttonClear;
+
+	public CalculatorUI() {
+		JFrame frame = new JFrame();
+		frame.add(createPanel());
+		frame.setBounds(100, 100, 300, 300);
+		frame.setTitle("Calculator");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setVisible(true);
+	}
 	
-	
-	public CalculatorPanel(JFrame frame) {
-		setLayout(new BorderLayout());
+	private JPanel createPanel() {
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
 		
 		text = new JTextField();
 		text.setEditable(false);
@@ -64,7 +74,6 @@ public class CalculatorPanel extends JPanel {
 		buttonDivision.setFont(new Font("serif", Font.BOLD, 22));
 		buttonClear = new JButton("C");
 		
-		JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
 		buttonPanel.add(button7);
 		buttonPanel.add(button8);
 		buttonPanel.add(button9);
@@ -82,10 +91,82 @@ public class CalculatorPanel extends JPanel {
 		buttonPanel.add(buttonClear);
 		buttonPanel.add(buttonDivision);
 		
-		add(text, BorderLayout.NORTH);
-		add(buttonPanel);
-		add(buttonResult, BorderLayout.SOUTH);
+		mainPanel.add(text, BorderLayout.NORTH);
+		mainPanel.add(buttonPanel);
+		mainPanel.add(buttonResult, BorderLayout.SOUTH);
 		
-		frame.add(this);
+		return mainPanel;
+	}
+
+	public JTextField getText() {
+		return text;
+	}
+
+	public JButton getButton0() {
+		return button0;
+	}
+
+	public JButton getButton1() {
+		return button1;
+	}
+
+	public JButton getButton2() {
+		return button2;
+	}
+
+	public JButton getButton3() {
+		return button3;
+	}
+
+	public JButton getButton4() {
+		return button4;
+	}
+
+	public JButton getButton5() {
+		return button5;
+	}
+
+	public JButton getButton6() {
+		return button6;
+	}
+
+	public JButton getButton7() {
+		return button7;
+	}
+
+	public JButton getButton8() {
+		return button8;
+	}
+
+	public JButton getButton9() {
+		return button9;
+	}
+
+	public JButton getButtonComa() {
+		return buttonComa;
+	}
+
+	public JButton getButtonResult() {
+		return buttonResult;
+	}
+
+	public JButton getButtonAddition() {
+		return buttonAddition;
+	}
+
+	public JButton getButtonSubtraction() {
+		return buttonSubtraction;
+	}
+
+	public JButton getButtonMultiplication() {
+		return buttonMultiplication;
+	}
+
+	public JButton getButtonDivision() {
+		return buttonDivision;
+	}
+
+	public JButton getButtonClear() {
+		return buttonClear;
 	}
 }
