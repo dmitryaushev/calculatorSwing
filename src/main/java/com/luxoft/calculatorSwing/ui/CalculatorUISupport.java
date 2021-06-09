@@ -75,7 +75,9 @@ public class CalculatorUISupport {
 			public void actionPerformed(ActionEvent e) {
 				if (!secondOperand.isEmpty()) {
 					Map<String, String> parameters = mapParameters();
-					modelManager.updateModelFromUI(parameters);				
+					modelManager.updateModelFromUI(parameters);		
+					firstOperand = text.getText();
+					secondOperand = "";
 				}
 			}
 		});
