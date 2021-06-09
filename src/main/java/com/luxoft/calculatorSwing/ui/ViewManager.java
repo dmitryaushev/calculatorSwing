@@ -1,4 +1,6 @@
-package com.luxoft.calculatorSwing;
+package com.luxoft.calculatorSwing.ui;
+
+import com.luxoft.calculatorSwing.model.ModelManager;
 
 public class ViewManager {
 	
@@ -6,6 +8,8 @@ public class ViewManager {
 	
 	private CalculatorUI calculatorUI;
 	private CalculatorUISupport calculatorUISupport;
+	
+	private ModelManager modelManager;
 	
 
 	public static ViewManager getInstance() {
@@ -18,6 +22,13 @@ public class ViewManager {
 	public void createUI() {
 		calculatorUI = new CalculatorUI();
 		calculatorUISupport = new CalculatorUISupport(calculatorUI);
+		
+		modelManager = ModelManager.getInstance();
+		modelManager.createModel();
+	}
+
+	public CalculatorUI getCalculateUI() {
+		return calculatorUI;
 	}
 
 }

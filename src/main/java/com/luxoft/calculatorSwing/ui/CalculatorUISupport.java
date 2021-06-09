@@ -1,10 +1,14 @@
-package com.luxoft.calculatorSwing;
+package com.luxoft.calculatorSwing.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import com.luxoft.calculatorSwing.model.ModelManager;
 
 public class CalculatorUISupport {
 
@@ -13,6 +17,7 @@ public class CalculatorUISupport {
 	private String operation = "";
 
 	private CalculatorUI calculatorUI;
+	private ModelManager modelManager;
 
 	private JTextField text;
 
@@ -36,29 +41,29 @@ public class CalculatorUISupport {
 
 	public CalculatorUISupport(CalculatorUI calculatorUI) {
 		this.calculatorUI = calculatorUI;
+		this.modelManager = ModelManager.getInstance();
 		createCalculatorListeners();
 	}
 
 	private void createCalculatorListeners() {
 		getElements();
-		addListener(button0);
-		addListener(button1);
-		addListener(button2);
-		addListener(button3);
-		addListener(button4);
-		addListener(button5);
-		addListener(button6);
-		addListener(button7);
-		addListener(button8);
-		addListener(button9);
-		addListener(buttonComa);
+		addOperandListener(button0);
+		addOperandListener(button1);
+		addOperandListener(button2);
+		addOperandListener(button3);
+		addOperandListener(button4);
+		addOperandListener(button5);
+		addOperandListener(button6);
+		addOperandListener(button7);
+		addOperandListener(button8);
+		addOperandListener(button9);
+		addOperandListener(buttonComa);
 		addOperationListener(buttonAddition);
 		addOperationListener(buttonSubtraction);
 		addOperationListener(buttonMultiplication);
 		addOperationListener(buttonDivision);
 
 		buttonClear.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 				text.setText("");
 				firstOperand = "";
@@ -66,31 +71,14 @@ public class CalculatorUISupport {
 				operation = "";
 			}
 		});
-		buttonResult.addActionListener(new ActionListener() {
-			
+		buttonResult.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				String result = "";
-				
-				switch (operation) {
-				case "+":
-					result = String.valueOf(Double.valueOf(firstOperand) + Double.valueOf(secondOperand));
-					break;
-				case "-":
-					result = String.valueOf(Double.valueOf(firstOperand) - Double.valueOf(secondOperand));
-					break;
-				case "*":
-					result = String.valueOf(Double.valueOf(firstOperand) * Double.valueOf(secondOperand));
-					break;
-				case "/":
-					result = String.valueOf(Double.valueOf(firstOperand) / Double.valueOf(secondOperand));
-					break;
-				default:
-					break;
-				}
-				text.setText(result);
+				Map<String, String> parameters = mapParameters();
+				modelManager.updateModelFromUI(parameters);
 			}
 		});
 	}
+	
 
 	private void getElements() {
 		text = calculatorUI.getText();
@@ -113,7 +101,7 @@ public class CalculatorUISupport {
 		buttonClear = calculatorUI.getButtonClear();
 	}
 
-	private void addListener(final JButton button) {
+	private void addOperandListener(final JButton button) {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				text.setText(text.getText() + e.getActionCommand());
@@ -133,5 +121,13 @@ public class CalculatorUISupport {
 				operation = button.getText();
 			}
 		});
+	}
+	
+	private Map<String, String> mapParameters() {
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put("firstOperand", firstOperand);
+		parameters.put("secondOperand", secondOperand);
+		parameters.put("operation", operation);
+		return parameters;
 	}
 }

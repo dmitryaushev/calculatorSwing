@@ -1,4 +1,4 @@
-package com.luxoft.calculatorSwing;
+package com.luxoft.calculatorSwing.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
