@@ -73,13 +73,14 @@ public class CalculatorUISupport {
 		});
 		buttonResult.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				Map<String, String> parameters = mapParameters();
-				modelManager.updateModelFromUI(parameters);
+				if (!secondOperand.isEmpty()) {
+					Map<String, String> parameters = mapParameters();
+					modelManager.updateModelFromUI(parameters);				
+				}
 			}
 		});
 	}
 	
-
 	private void getElements() {
 		text = calculatorUI.getText();
 		button0 = calculatorUI.getButton0();
