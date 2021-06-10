@@ -12,7 +12,7 @@ import com.luxoft.calculatorSwing.model.ModelManager;
 
 public class CalculatorUISupport {
 
-	private String firstOperand = "";
+	private String firstOperand = "0";
 	private String secondOperand = "";
 	private String operation = "";
 
@@ -64,8 +64,8 @@ public class CalculatorUISupport {
 
 		buttonClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				text.setText("");
-				firstOperand = "";
+				text.setText("0");
+				firstOperand = "0";
 				secondOperand = "";
 				operation = "";
 			}
@@ -122,7 +122,11 @@ public class CalculatorUISupport {
 	private void addOperandListener(final JButton button) {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				text.setText(text.getText() + e.getActionCommand());
+				if (firstOperand.equals("0") && operation.isEmpty()) {
+					text.setText(e.getActionCommand());
+				} else {
+					text.setText(text.getText() + e.getActionCommand());				
+				}			
 				if (operation.isEmpty()) {
 					firstOperand = text.getText();
 				} else {

@@ -45,7 +45,7 @@ public class CalculatorUI {
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
 		
-		text = new JTextField();
+		text = new JTextField("0");
 		text.setEditable(false);
 		text.setFont(new Font("serif", Font.BOLD, 22));
 		
