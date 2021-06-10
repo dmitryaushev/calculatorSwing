@@ -31,7 +31,7 @@ public class CalculatorUISupport {
 	private JButton button7;
 	private JButton button8;
 	private JButton button9;
-	private JButton buttonComa;
+	private JButton buttonComma;
 	private JButton buttonResult;
 	private JButton buttonAddition;
 	private JButton buttonSubtraction;
@@ -57,7 +57,6 @@ public class CalculatorUISupport {
 		addOperandListener(button7);
 		addOperandListener(button8);
 		addOperandListener(button9);
-		addOperandListener(buttonComa);
 		addOperationListener(buttonAddition);
 		addOperationListener(buttonSubtraction);
 		addOperationListener(buttonMultiplication);
@@ -81,6 +80,22 @@ public class CalculatorUISupport {
 				}
 			}
 		});
+		buttonComma.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (operation.isEmpty()) {
+					if (!firstOperand.contains(".")) {
+						text.setText(text.getText() + e.getActionCommand());
+						firstOperand = text.getText();
+					} 
+				} else {
+					if (!secondOperand.contains(".")) {
+						text.setText(text.getText() + e.getActionCommand());
+						secondOperand = secondOperand + e.getActionCommand();
+					} 
+				}
+			}
+		});
 	}
 	
 	private void getElements() {
@@ -95,7 +110,7 @@ public class CalculatorUISupport {
 		button7 = calculatorUI.getButton7();
 		button8 = calculatorUI.getButton8();
 		button9 = calculatorUI.getButton9();
-		buttonComa = calculatorUI.getButtonComa();
+		buttonComma = calculatorUI.getButtonComa();
 		buttonResult = calculatorUI.getButtonResult();
 		buttonAddition = calculatorUI.getButtonAddition();
 		buttonSubtraction = calculatorUI.getButtonSubtraction();

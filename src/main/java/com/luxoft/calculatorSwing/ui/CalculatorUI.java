@@ -23,7 +23,7 @@ public class CalculatorUI {
 	private JButton button7;
 	private JButton button8;
 	private JButton button9;
-	private JButton buttonComa;
+	private JButton buttonComma;
 	private JButton buttonResult;
 	private JButton buttonAddition;
 	private JButton buttonSubtraction;
@@ -60,8 +60,8 @@ public class CalculatorUI {
 		button8 = new JButton("8");
 		button9 = new JButton("9");
 		
-		buttonComa = new JButton(".");
-		buttonComa.setFont(new Font("serif", Font.BOLD, 22));
+		buttonComma = new JButton(".");
+		buttonComma.setFont(new Font("serif", Font.BOLD, 22));
 		buttonResult = new JButton("=");
 		buttonResult.setFont(new Font("serif", Font.BOLD, 22));
 		buttonAddition = new JButton("+");
@@ -86,7 +86,7 @@ public class CalculatorUI {
 		buttonPanel.add(button2);
 		buttonPanel.add(button3);
 		buttonPanel.add(buttonMultiplication);
-		buttonPanel.add(buttonComa);
+		buttonPanel.add(buttonComma);
 		buttonPanel.add(button0);
 		buttonPanel.add(buttonClear);
 		buttonPanel.add(buttonDivision);
@@ -143,7 +143,7 @@ public class CalculatorUI {
 	}
 
 	public JButton getButtonComa() {
-		return buttonComa;
+		return buttonComma;
 	}
 
 	public JButton getButtonResult() {
